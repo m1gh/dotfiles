@@ -1,0 +1,130 @@
+# OS dependent
+case `uname` in
+    Darwin)
+        # kubernetes - docker desktop
+        #alias kc='kubectl'
+        #alias kube='minikube'
+
+        # setup autocomplete in zsh into the current shell
+        #source <(kubectl completion zsh)
+
+        # add autocomplete permanently to your zsh shell
+        #echo "[[ $commands[kubectl] ]] && source <(kubectl completion zsh)" >> ~/.zshrc
+
+        # os updates
+        alias osup='brew update && brew outdated --cask && brew upgrade && brew cleanup && brew doctor && brew cu'
+        ;;
+    Linux)
+        # kubernetes - microk8s
+        #alias kc='microk8s.kubectl'
+        #alias kubectl='microk8s.kubectl'
+        #alias m8='microk8s'
+
+        # os updates
+        alias osup='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean && sudo snap refresh'
+        ;;
+esac
+
+# directories
+alias ....='cd ../../..'
+alias ...='cd ../..'
+alias ..='cd ..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
+
+# commands
+alias c='clear'
+alias x='exit'
+alias lg='gls -A -B -G -h -1al --group-directories-first --color=auto'
+alias ll='ls -A -B -G -h -1al'
+alias cpi='cp -iv'
+alias h='history'
+alias j='jobs -l'
+alias mk='mkdir -p'
+alias mv='mv -iv'
+alias path='echo -e ${PATH//:/\\n}'
+alias rm='rm -i'
+alias rmi="rm -I"
+alias rmf='rm -rf'
+alias which='type -a'
+alias lsusb='system_profiler SPUSBDataType'
+
+# config files
+alias vi='nvim'
+alias vim='vim'
+alias vimrc='vi ~/.vimrc'
+alias fmrc='vim ~/.config/vifm/.vifmrc'
+alias neorc='vi ~/.config/nvim/init.vim'
+alias rel='source ~/.zshrc'
+alias relb='source ~/.bashrc'
+alias zrc='vi ~/.zshrc'
+alias bashrc='vi ~/.bashrc'
+alias bashp='vi ~/.bash_profile'
+alias alrc='vi ~/.aliases'
+alias gitrc='vi ~/.gitconfig'
+alias hostrc='sudo vi /etc/hosts'
+alias muxrc='vi ~/.tmux.conf'
+alias brewrc='vi ~/.brew/Brewfile'
+alias brundle='brew bundle --file ~/.brew/Brewfile'
+alias epath='vi /etc/paths.d'
+alias path='echo "${PATH//:/\n}"'
+alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias itermrc='vi "Library/Application Support/iTerm2/DynamicProfiles/profile-mghz.json"'
+
+# fzf
+alias fz='fzf --height 40% --reverse'
+
+# networking
+alias ping='ping -c 4'
+
+# common
+alias grep='grep -n'
+alias pre='open -a Preview'
+alias text='open -a TextEdit'
+#alias doom='~/.emacs.d/bin/doom'
+
+# git
+alias g='git'
+
+# youtube
+alias yt='youtube-dl'
+alias ytb='youtube-dl -f best'
+
+# docker
+alias dk='docker'
+alias dki='docker image'
+alias dke='docker exec'
+alias dkrm='docker rm $(docker ps --filter status=exited -q)'
+alias dm='docker-machine'
+alias dc='docker-compose'
+
+# c lang
+alias gcci="echo /\"/\" | gcc -xc - -v -E"
+
+# rust
+#alias cb='cargo build'
+#alias ci='cargo install'
+#alias cf='cargo fmt'
+#alias co='cargo'
+#alias cr='cargo run'
+#alias ct='cargo test'
+#alias cti='cargo test -- --ignored'
+#alias cw='cargo watch'
+#alias ru='rustup'
+#alias cwatch='cargo watch -i .gitignore -i "pkg/*" -s "wasm-pack build"'
+#alias exr='exercism'
+
+# python
+alias py='python3'
+alias py2='python2'
+alias python='python3'
+alias pip='pip3'
+
+# jpmc
+# s and p to select from multiple accounts if provisioned
+#alias pclauth='pcl aws --sandbox-user --domain NAEAST --sid i698053 -s -p adfs'
+
+# functions
+function vhelp() {
+    vim -u NONE -c "help $1 | only | syntax enable";
+}
